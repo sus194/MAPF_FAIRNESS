@@ -1,6 +1,6 @@
 # MAPF Fairness Project: Guide
 
-**Project Goal:** We are comparing a **Naive** approach to fairness (Weighted Sum) against a **Novel** approach (Bounded Constraint) in Multi-Agent Path Finding.
+**Project Goal:** We are comparing an **Unfair** approach (Standard CBS) to a **Naive** approach to fairness (Weighted Sum) and a **Novel** approach (Bounded Constraint) in Multi-Agent Path Finding.
 
 ### 1\. How to Run the Experiments
 
