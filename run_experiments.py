@@ -95,7 +95,7 @@ def main():
                 **data
             }
             results.append(row)
-            success_mark = "✓" if data.get('success') else "✗"
+            success_mark = "[OK]" if data.get('success') else "[FAIL]"
             print(f" {success_mark}")
 
     df = pd.DataFrame(results)
