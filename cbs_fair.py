@@ -9,11 +9,12 @@ class FairCBSSolver(CBSSolver):
     1. Weighted (Naive): Cost = alpha*SOC + beta*Stretch
     2. Bounded (Novel):  Prune any node where MaxStretch > stretch_bound
     """
-    def __init__(self, my_map, starts, goals, alpha=1.0, beta=0.0, stretch_bound=None):
+    def __init__(self, my_map, starts, goals, alpha=1.0, beta=0.0, stretch_bound=None, time_limit=30):
         super().__init__(my_map, starts, goals)
         self.alpha = alpha
         self.beta = beta
         self.stretch_bound = stretch_bound 
+        self.time_limit = time_limit
 
     def find_solution(self, disjoint=True):
         self.start_time = timer.time()
@@ -41,6 +42,9 @@ class FairCBSSolver(CBSSolver):
 
         # 2. High-Level Search
         while self.open_list:
+            if timer.time() - self.start_time > self.time_limit:
+                raise BaseException("Timeout")  # <--- Kills the search safely
+
             node = self.pop_node()
 
             if len(node['collisions']) == 0:
