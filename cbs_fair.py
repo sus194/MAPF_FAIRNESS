@@ -48,6 +48,7 @@ class FairCBSSolver(CBSSolver):
             node = self.pop_node()
 
             if len(node['collisions']) == 0:
+                self.CPU_time = timer.time() - self.start_time
                 self.print_results(node)
                 return node['paths']
 
